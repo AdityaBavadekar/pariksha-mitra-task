@@ -15,8 +15,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/", authRouter);
-app.use("/user-profile", authMiddleware, userRouter);
+app.get("/", (req, res) => {
+    res.send("API is running...");
+});
+
+app.use("/api/v1", authRouter);
+app.use("/api/v1/user-profile", authMiddleware, userRouter);
 
 const port = process.env.PORT || 5080;
 

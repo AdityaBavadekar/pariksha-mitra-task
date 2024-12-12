@@ -11,9 +11,7 @@ const authMiddleware = (req, res, next) => {
         if (!data) {
             return res.status(400).json({ error: true, message : "Invalid Token" })
         }
-        req.userId = data._id;
-        console.log(JSON.stringify(data));
-        
+        req.userId = data._id;        
         next()
     } catch (error) {
         return res.status(400).json({ error: true, message : "Invalid Token" })
