@@ -6,6 +6,7 @@ import { authRouter } from "./routes/auth.js";
 import { userRouter } from "./routes/user.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 dotenv.config();
 connectDB();
@@ -14,6 +15,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 
 app.get("/", (req, res) => {
     res.send("API is running...");
