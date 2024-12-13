@@ -4,11 +4,15 @@ import {
     generateJwtAndSetCookie,
     JWT_TOKEN_COOKIE_KEY,
 } from "../utils/generateJwt.js";
+import { isValidEmail } from "../utils/validateEmail.js";
 
 const registerUser = async (req, res) => {
     const { name, email, password, profilePicture, institute, grade } = req.body;
     if (!name || !email || !password) {
         return res.status(400).json({ error: true, message: "Incomplete data" });
+    }
+    if (!isValidEmail(email)) {
+        return res.status(400).json({ error: true, message: "Invalid email address" });
     }
     try {
         const userExists = await User.findOne({ email });
@@ -51,6 +55,9 @@ const loginUser = async (req, res) => {
         return res
             .status(400)
             .json({ error: true, message: "Incomplete data" });
+    }
+    if (!isValidEmail(email)) {
+        return res.status(400).json({ error: true, message: "Invalid email address" });
     }
     try {
         const user = await User.findOne({ email });
