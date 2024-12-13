@@ -4,3 +4,18 @@
 - Detailed performance analytics
 - Teacher-guided feedback tests
 - Interactive learning experiences through games
+
+## Suppported RESTful endpoints:
+- POST `/register`
+- POST `/login`
+- GET `/user-profile`
+
+## Deployement
+- Backend is Deployed on vercel
+- Access v1 API at:
+```
+https://pariksha-mitra-task.vercel.app/api/v1/
+```
+
+## Documentation
+- [View API Documentation](https://app.swaggerhub.com/apis/BVKRADITYA/pariksha-mitra/1.0.0)
